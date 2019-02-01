@@ -27,33 +27,3 @@ def gradientDescent(x, y, theta1, alpha):
 	
 
 gradientDescent(x, y, theta1, alpha)
-
-
-
-
-
-"""	
-
-def gradientDescent(X, y, theta1, alpha):
-	m = length(y)
-	J_history = []
-	for i in range(1500):
-		delta=1/m*(X'*X*theta-X'*y);
-		theta1=theta1-alpha.*delta;
-		
-def nithya():
-	return (10)
-J_history = []
-J_history.append(nithya())
-print (J_history)
-
-function [theta, J_history] = gradientDescent(X, y, theta1, alpha)
-m = length(y); 
-J_history = []    
-for i = 1:1500
-    delta=1/m*(X'*X*theta-X'*y);
-    theta=theta-alpha.*delta;
-    J_history(i) = computeCost(X, y, theta);
-end
-end
-"""
