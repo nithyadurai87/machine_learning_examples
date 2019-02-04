@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 x = [1, 2, 3]
 y = [1, 2, 3]
 
-theta0 = 1.5
-theta1 = 0
-
 plt.figure()
 plt.title('Data - X and Y')
 plt.plot(x,y,'*')
@@ -24,6 +21,8 @@ def linear_regression(theta0,theta1):
 	plt.yticks([0,1,2,3])
 	plt.show()	
 
+theta0 = 1.5
+theta1 = 0
 linear_regression(theta0,theta1)
 
 theta0a = 0
