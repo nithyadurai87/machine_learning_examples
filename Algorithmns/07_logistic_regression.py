@@ -1,21 +1,21 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model.logistic import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score
 
-x = np.array([[1, 800, 2, 15],[1, 1200, 3, 1],[1, 2400, 5, 5]])
-y = np.array([3000000,2000000,3500000])
-theta = np.array([100, 1000, 10000, 100000])
 
-predicted_y = x.dot(theta.transpose())
+df = pd.read_csv('./spam.csv', delimiter=',',header=None)
+X_train_raw, X_test_raw, y_train, y_test = train_test_split(df[1],df[0])
 
-m = y.size
-diff = predicted_y - y
-squares = np.square(diff)
-#sum_of_squares = 5424168464
-sum_of_squares = np.sum(squares)
-cost_fn = 1/(2*m)*sum_of_squares 
-print (diff)
-print (squares)
-print (sum_of_squares)
-print (cost_fn)
+vectorizer = TfidfVectorizer()
+X_train = vectorizer.fit_transform(X_train_raw)
+X_test = vectorizer.transform(X_test_raw)
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
+predictions = classifier.predict(X_test)
+print(predictions)
+
+
 
 
