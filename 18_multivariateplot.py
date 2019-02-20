@@ -12,9 +12,6 @@ plt.savefig('ParallelCoordinates.jpg')
 desc_data = df.describe()
 desc_data.to_csv('./metrics.csv')
 
-X = df[list(df.columns)[:-1]]
-y = df['SalePrice']
-
 data = [
     go.Parcoords(
         line = dict(colorscale = 'Jet',

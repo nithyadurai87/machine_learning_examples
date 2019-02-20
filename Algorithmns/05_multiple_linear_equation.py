@@ -6,6 +6,7 @@ y = np.array([3000000,2000000,3500000])
 theta = np.array([100, 1000, 10000, 100000])
 
 predicted_y = x.dot(theta.transpose())
+print (predicted_y)
 
 m = y.size
 diff = predicted_y - y
@@ -17,5 +18,4 @@ print (diff)
 print (squares)
 print (sum_of_squares)
 print (cost_fn)
-
 
