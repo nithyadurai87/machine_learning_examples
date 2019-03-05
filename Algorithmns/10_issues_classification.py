@@ -25,9 +25,27 @@ clf = MultinomialNB().fit (TfidfTransformer().fit_transform(c.fit_transform(X_tr
 
 print(clf.predict(c.transform(["This company refuses to provide me verification and validation of debt per my right under the FDCPA. I do not believe this debt is mine."])))
 
-"""
 tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 2), stop_words='english')
 features = tfidf.fit_transform(df.Issue).toarray()
+print (features)
+df['category_id'] = df['Product'].factorize()[0]
+pro_cat = df[['Product', 'category_id']].drop_duplicates().sort_values('category_id')
+print (pro_cat)
+for i, j in sorted(dict(pro_cat.values).items()):
+	indices = np.argsort(chi2(features, df.category_id == j)[0])
+	print (indices)
+	feature_names = np.array(tfidf.get_feature_names())[indices]
+	unigrams = [i for i in feature_names if len(i.split(' ')) == 1]
+	bigrams = [i for i in feature_names if len(i.split(' ')) == 2]
+	print(">",i)
+	print("unigrams:",','.join(unigrams[:5]))
+	print("bigrams:",','.join(bigrams[:5]))
+
+
+
+"""
+
+
 print (features.shape)
 
 
@@ -42,4 +60,8 @@ for i, j in sorted(dict(pro_cat.values).items()):
 	print("unigrams:",','.join(unigrams[:5]))
 	print("bigrams:",','.join(bigrams[:5]))
 """
+
+9884823387
+
+
 

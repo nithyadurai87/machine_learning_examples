@@ -35,3 +35,10 @@ gnb_predictions = gnb.predict(X_test)
 print (gnb.score(X_test, y_test))
 print (confusion_matrix(y_test, gnb_predictions))
 print (precision_recall_fscore_support(y_test, gnb_predictions))
+
+
+
+நமது neural network-ல் உள்ள ஒவ்வொரு அலகுக்கும் என்னென்ன எடைகளைப் பயன்படுத்தினால், தவறுகளைக் குறைக்கலாம் எனக் கண்டுபிடிப்பதே back propagation ஆகும் . ஒவ்வொரு அடுக்கிலும் நிகழும் தவறைக் கண்டுபிடிக்க அதன் partial derivative மதிப்புகள் பின்னிருந்து முன்னாகக் கணக்கிடப்படுகின்றன. பின்னர் அவைகளை ஒன்று திரட்டி அந்த network-ன் cost கண்டுபிடிக்கப்படுகிறது. பொதுவாக gradient descent algorithm -ஆனது குறைந்த அளவு வேறுபாடு தரக்கூடிய வகையில் neuron-களின் எடையை அமைக்க இந்த back propagation -ஐப் பயன்படுத்துகிறது. 
+
+
+
