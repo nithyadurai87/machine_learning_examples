@@ -1,0 +1,12 @@
+Sepal_length,Sepal_width,Petal_length,Petal_width,Flower
+5,3,1,3,Car
+4,3,1,0,Bus
+4,3,1,3,Train
+4,3,1,0,Bus
+5,3,1,0,Train
+4,2,1,3,Bus
+5,4,1,0,Bus
+5,2,4,1,Train
+6,2,4,1,Train
+6,3,5,2,Car
+(['Car','Bus','Train','Bus','Train','Bus','Bus','Train','Train','Car'], name='Vehicle')

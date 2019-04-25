@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="Petal_width <= 0.8\ngini = 0.66\nsamples = 64\nvalue = [45, 32, 35]\nclass = Lotus", fillcolor="#e5813921"] ;
+1 [label="gini = 0.0\nsamples = 23\nvalue = [0, 0, 35]\nclass = Rose", fillcolor="#8139e5ff"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Petal_width <= 1.75\ngini = 0.49\nsamples = 41\nvalue = [45, 32, 0]\nclass = Lotus", fillcolor="#e581394a"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="Sepal_length <= 7.05\ngini = 0.13\nsamples = 22\nvalue = [41, 3, 0]\nclass = Lotus", fillcolor="#e58139ec"] ;
+2 -> 3 ;
+4 [label="Petal_width <= 1.65\ngini = 0.05\nsamples = 21\nvalue = [41, 1, 0]\nclass = Lotus", fillcolor="#e58139f9"] ;
+3 -> 4 ;
+5 [label="gini = 0.0\nsamples = 19\nvalue = [37, 0, 0]\nclass = Lotus", fillcolor="#e58139ff"] ;
+4 -> 5 ;
+6 [label="Sepal_width <= 2.75\ngini = 0.32\nsamples = 2\nvalue = [4, 1, 0]\nclass = Lotus", fillcolor="#e58139bf"] ;
+4 -> 6 ;
+7 [label="gini = 0.0\nsamples = 1\nvalue = [0, 1, 0]\nclass = Jasmin", fillcolor="#39e581ff"] ;
+6 -> 7 ;
+8 [label="gini = 0.0\nsamples = 1\nvalue = [4, 0, 0]\nclass = Lotus", fillcolor="#e58139ff"] ;
+6 -> 8 ;
+9 [label="gini = 0.0\nsamples = 1\nvalue = [0, 2, 0]\nclass = Jasmin", fillcolor="#39e581ff"] ;
+3 -> 9 ;
+10 [label="Petal_length <= 4.85\ngini = 0.21\nsamples = 19\nvalue = [4, 29, 0]\nclass = Jasmin", fillcolor="#39e581dc"] ;
+2 -> 10 ;
+11 [label="Sepal_width <= 3.1\ngini = 0.32\nsamples = 2\nvalue = [4, 1, 0]\nclass = Lotus", fillcolor="#e58139bf"] ;
+10 -> 11 ;
+12 [label="gini = 0.0\nsamples = 1\nvalue = [0, 1, 0]\nclass = Jasmin", fillcolor="#39e581ff"] ;
+11 -> 12 ;
+13 [label="gini = 0.0\nsamples = 1\nvalue = [4, 0, 0]\nclass = Lotus", fillcolor="#e58139ff"] ;
+11 -> 13 ;
+14 [label="gini = 0.0\nsamples = 17\nvalue = [0, 28, 0]\nclass = Jasmin", fillcolor="#39e581ff"] ;
+10 -> 14 ;
+}
