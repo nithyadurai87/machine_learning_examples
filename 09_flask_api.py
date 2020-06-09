@@ -4,7 +4,8 @@ import pandas as pd
 import numpy
 from flask import Flask, render_template, request, jsonify
 from pandas.io.json import json_normalize
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import joblib
 
 app = Flask(__name__)
 port = int(os.getenv('PORT', 5500))
