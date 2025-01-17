@@ -3,15 +3,16 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, ExtraTreesRegressor, GradientBoostingRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.neural_network import MLPRegressor
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split,cross_val_score
-from sklearn.externals import joblib
+import joblib
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 from math import sqrt
 import numpy as np
 import os
 
-df = pd.read_csv('./06_output_data.csv')
+df = pd.read_csv('/content/sample_data/06_output_data.csv')
 
 i = list(df.columns.values)
 i.pop(i.index('SalePrice'))
@@ -27,27 +28,33 @@ def linear():
 	regressor.fit(X_train, y_train)
 	y_predictions = regressor.predict(X_test)
 	return (regressor.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
-	
+
 def ridge():
-	regressor = Ridge(alpha=.3, normalize=True)
-	regressor.fit(X_train, y_train)
-	y_predictions = regressor.predict(X_test)
-	return (regressor.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
-	
+  scaler = StandardScaler()
+  X_normalized = scaler.fit_transform(X_train)
+  ridge = Ridge()
+  ridge.fit(X_normalized, y_train)
+  y_predictions = ridge.predict(X_test)
+  return (ridge.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
+
 def lasso():
-	regressor = Lasso(alpha=0.00009, normalize=True)
-	regressor.fit(X_train, y_train)
-	y_predictions = regressor.predict(X_test)
-	return (regressor.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
-	
+  scaler = StandardScaler()
+  X_normalized = scaler.fit_transform(X_train)
+  lasso = Lasso()
+  lasso.fit(X_normalized, y_train)
+  y_predictions = lasso.predict(X_test)
+  return (lasso.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
+
 def elasticnet():
-	regressor = ElasticNet(alpha=1, l1_ratio=0.5, normalize=False)
-	regressor.fit(X_train, y_train)
-	y_predictions = regressor.predict(X_test)
-	return (regressor.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
-	
+  scaler = StandardScaler()
+  X_normalized = scaler.fit_transform(X_train)
+  elasticNet = ElasticNet()
+  elasticNet.fit(X_normalized, y_train)
+  y_predictions = elasticNet.predict(X_test)
+  return (elasticNet.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
+
 def randomforest():
-	regressor = RandomForestRegressor(n_estimators=15,min_samples_split=15,criterion='mse',max_depth=None)
+	regressor = RandomForestRegressor(n_estimators=15,min_samples_split=15,criterion='friedman_mse',max_depth=None)
 	regressor.fit(X_train, y_train)
 	y_predictions = regressor.predict(X_test)
 	print("Selected Features for RamdomForest",regressor.feature_importances_)
@@ -82,7 +89,7 @@ def extratrees():
 	return (regressor.score(X_test, y_test),sqrt(mean_squared_error(y_test, y_predictions)))
 
 def gradientboosting():
-	regressor = GradientBoostingRegressor(loss='ls',n_estimators=500, min_samples_split=15).fit(X_train, y_train)
+	regressor = GradientBoostingRegressor(loss='quantile',n_estimators=500, min_samples_split=15).fit(X_train, y_train)
 	regressor.fit(X_train, y_train)
 	y_predictions = regressor.predict(X_test)
 	print("Selected Features for Gradientboosting",regressor.feature_importances_)
@@ -99,4 +106,3 @@ print ("DecisionTree = ",decisiontree())
 print ("AdaBoost = ",adaboost())
 print ("ExtraTrees = ",extratrees())
 print ("GradientBoosting = ",gradientboosting())
-
